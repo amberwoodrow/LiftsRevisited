@@ -74,6 +74,14 @@ body {
   height:400px;
 }
 
+.remove-exercise {
+  font-weight: bold;
+}
+
+/*#chart-container {
+  display: none;
+}*/
+
 /**
  * Dark theme for Highcharts JS
  * @author Torstein Honsi

@@ -31,4 +31,3 @@
 ![alt tag](http://i.imgur.com/dtdR35p.jpg)
 ![alt tag](http://i.imgur.com/sp7ShtF.jpg)
 
-

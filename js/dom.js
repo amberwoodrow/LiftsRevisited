@@ -3,9 +3,9 @@
 
 var user = new User(); // to use user's workout I make a user
 var currentDate = new Date();
-var workout = user.getWorkout(currentDate);
 
-// var workout = new Workout(new Date(), $('#tableMain'));
+var workout = user.getWorkout(currentDate);
+workout.render();
 $(document).on('ready', function() {
   
   // Appends date now to h1
@@ -20,20 +20,21 @@ $(document).on('ready', function() {
     updateDate();
     workout = user.getWorkout(currentDate);
     workout.render();
+    user.save();
   });
 
   $('#rightArrow').click(function() {
     addDate(currentDate);
     updateDate();
     workout = user.getWorkout(currentDate);
-    workout = user.getWorkout(currentDate);
     workout.render();
+    user.save();
   });
 
   // adds exercise on click it's value name
   $('#addExerciseBtn').click(function() {
-    console.log(workout);
     workout.addExercise($('#exerciseName').val());
+    user.save();
   });
 
   // document checks for clicks on elements that were added later, this type of click handler is more
@@ -46,8 +47,15 @@ $(document).on('ready', function() {
     // gets val from #exerciseId-new-reps
     var reps = $('#'+ exerciseId + '-new-reps').val();
 
+    // if (reps === "" && !(reps.match(/^\d*\.?\d+$/)) && !(weight.match(/^\d*\.?\d+$/))){
+      console.log('weight and reps must be numbers, you do not have to enter a weight but you do have to enter reps');
+    // }
     // creates new set and adds it to the exercises set
-    workout.exercises[exerciseId].addSet(weight, reps);
+    // else {
+      workout.exercises[exerciseId].addSet(weight, reps);
+      user.save();
+      workout.render();
+    // }
   });
 
   // Removes set by using the button clicked's data-exercise and -set -id
@@ -57,73 +65,78 @@ $(document).on('ready', function() {
     // removes set by targeting the id's place in exercises arr and removing it by id and rendering the
     // exercises again in remove set method
     workout.exercises[exerciseId].removeSet(setId);
+    user.save();
+    workout.render();
   });
 
   // removes exercise by data-exercise-id
   $(document).on('click', '.remove-exercise',function() {
     var exerciseId = $(this).data("exercise-id");
     workout.removeExercise(exerciseId);
+    user.save();
   });
 
 
-  // chart example
-  // $(function () {
-  //   $('#chart-container').highcharts({
-  //       chart: {
-  //           zoomType: 'x'
-  //       },
-  //       title: {
-  //           text: 'Weight Per Workout Comparison'
-  //       },
-  //       subtitle: {
-  //           text: document.ontouchstart === undefined ?
-  //                   'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
-  //       },
-  //       xAxis: {
-  //           type: 'datetime'
-  //       },
-  //       yAxis: {
-  //           title: {
-  //               text: 'weight'
-  //           }
-  //       },
-  //       legend: {
-  //           enabled: false
-  //       },
-  //       plotOptions: {
-  //           area: {
-  //               fillColor: {
-  //                   linearGradient: {
-  //                       x1: 0,
-  //                       y1: 0,
-  //                       x2: 0,
-  //                       y2: 1
-  //                   },
-  //                   stops: [
-  //                       [0, Highcharts.getOptions().colors[0]],
-  //                       [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-  //                   ]
-  //               },
-  //               marker: {
-  //                   radius: 2
-  //               },
-  //               lineWidth: 1,
-  //               states: {
-  //                   hover: {
-  //                       lineWidth: 1
-  //                   }
-  //               },
-  //               threshold: null
-  //           }
-  //       },
+  $(function () {
+    $('#chart-container').highcharts({
+        chart: {
+            zoomType: 'x'
+        },
+        title: {
+            text: 'Weight Per Workout Comparison'
+        },
+        subtitle: {
+            text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+        },
+        xAxis: {
+            type: 'datetime'
+        },
+        yAxis: {
+            title: {
+                text: 'weight'
+            }
+            ,min: 0
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            area: {
+                fillColor: {
+                    linearGradient: {
+                        x1: 0,
+                        y1: 0,
+                        x2: 0,
+                        y2: 1
+                    },
+                    stops: [
+                        [0, Highcharts.getOptions().colors[0]],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                    ]
+                },
+                marker: {
+                    radius: 2
+                },
+                lineWidth: 1,
+                states: {
+                    hover: {
+                        lineWidth: 1
+                    }
+                },
+                threshold: null
+            }
+        },
 
-  //       series: [{
-  //           type: 'area',
-  //           name: 'USD to EUR',
-  //           data: data
-  //       }]
-  //   });
-  // });
-
+        series: [{
+            type: 'area',
+            name: 'weight on date',
+            data: user.getTotalWeight()
+        }]
+    });
+  });
 });
+
+// not actually removing from table on refresh
+// chart goes crazy if you have dates out of order.
 

@@ -9,7 +9,11 @@ Set.prototype.render = function(id,exid) {
     "<td>" + (id + 1) + "</td>" +
     "<td>" + this.reps + "</td>" +
     "<td>" + this.weight + "</td>" +
-    "<td><button class='remove-set' data-exercise-id='" + exid + "' data-set-id='" + id + "'>Remove</button></td>" +
+    "<td><a class='remove-set' data-exercise-id='" + exid + "' data-set-id='" + id + "'>Remove set</a></td>" +
     "</tr>";
   return htmlOutput;
+};
+
+Set.prototype.getTotalWeight = function() {
+  return this.weight * this.reps;
 };

@@ -21,3 +21,11 @@ Workout.prototype.removeExercise = function(id) {
   this.exercises.splice(id, 1);
   this.render();
 };
+
+Workout.prototype.getTotalWeight = function() {
+  var totalWeightOfDay = 0;
+  for (var i=0; i<this.exercises.length; i++) {
+    totalWeightOfDay += this.exercises[i].getTotalWeight();
+  }
+  return totalWeightOfDay;
+};
