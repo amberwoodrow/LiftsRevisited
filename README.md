@@ -23,9 +23,13 @@
 * jQuery
 
 ##### Stretch goals (storage)
-* AJAX
+* Sign in/authentication/sign up
+* Validation
+* Session
+* Steal form submission/local storage save with jquery
+* Templating
+
 * Jasmine
-* JSON
 
 #### Wire frame
 ![alt tag](http://i.imgur.com/dtdR35p.jpg)

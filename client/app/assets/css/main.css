@@ -78,9 +78,9 @@ body {
   font-weight: bold;
 }
 
-/*#chart-container {
-  display: none;
-}*/
+h2 {
+  display: inline-block;
+}
 
 /**
  * Dark theme for Highcharts JS
