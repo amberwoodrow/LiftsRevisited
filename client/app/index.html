@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="lifts-app">
+<html lang="en" ng-app="liftsApp">
   <head>
     <meta charset="utf-8">
     <title>Lifts</title>
+    <!-- Bootstrap CDN -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   </head>
   <body>
@@ -30,30 +32,51 @@
     <!-- Main Content -->
     <div class="container">
 
-      <div ui-view="">
+      <div ng-view>
       </div>
 
     </div>
-    <!-- jquery -->
+
+
+    <!-- jQuery CDNs-->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!-- angularJS -->
+
+    <!-- High Charts CDNs -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+
+    <!-- AngularJS CDNs -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-cookies.js"></script>
-    <!-- files -->
-    <script type="text/javascript" src="./app.js"></script>
+
+    <!-- AngularJS app config and routes -->
+    <script type="text/javascript" src="./app.config.js"></script>
+    <script type="text/javascript" src="./app.routes.js"></script>
+
+    <!-- JS files -->
     <script type="text/javascript" src="assets/js/utility.js"></script>
     <script type="text/javascript" src="shared/models/user.js"></script>
     <script type="text/javascript" src="shared/models/workout.js"></script>
     <script type="text/javascript" src="shared/models/exercise.js"></script>
     <script type="text/javascript" src="shared/models/set.js"></script>
     <script type="text/javascript" src="assets/js/dom.js"></script>
-    <!-- adds links for high charts -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
+
+    <!-- AngularJS Components -->
+
+    <!-- unauthenticated auth component -->
+    <script type="text/javascript" src="components/unauthenticated/auth.controller.js"></script>
+    <script type="text/javascript" src="components/unauthenticated/auth.service.js"></script>
+
+    <!-- authenticated workout entry component -->
+    <script type="text/javascript" src="components/authenticated/workout-entry/workout-entry.controller.js"></script>
+
+    <!-- authenticated chart component -->
+    <script type="text/javascript" src="components/authenticated/chart/chart.controller.js"></script>
+
 
   </body>
 </html>
