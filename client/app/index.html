@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="lifts-app">
   <head>
     <meta charset="utf-8">
-    <title>Untitled</title>
+    <title>Lifts</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   </head>
   <body>
     <!-- Navigation -->
@@ -29,79 +29,28 @@
 
     <!-- Main Content -->
     <div class="container">
-      <!-- Date Container -->
-      <div class="dateContainer">
-        <h1>
-          <span id="leftArrow">&lt; </span>
-          <span id="date"></span>
-          <span id="rightArrow"> &gt;</span>
-        </h1>
+
+      <div ui-view="">
       </div>
-
-      <div id="table-container">
-        <!-- Table -->
-        <table class='table table-striped'>
-          <thead>
-            <tr>
-              <th>Exercise</th>
-              <th>Set</th>
-              <th>Reps</th>
-              <th>Weight</th> <!-- can be null -->
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody id="tableMain">
-          </tbody>
-        </table>
-
-        <!-- Adds a highlight style to everything contained in this div -->
-        <div class="highlight addFormDiv">
-
-          <!-- Adds to excercise -->
-          <div id="formAdd" class="formDisplay">
-            <form class="form-inline">
-              <div class="form-group">
-                <label for="exerciseName">Exercise</label>
-                <select class="form-control" id="exerciseName" placeholder="Exercise">
-                  <option value="Squat">Squat</option>
-                  <option value="Deadlift">Deadlift</option>
-                  <option value="Bench Press">Bench Press</option>
-                  <option value="Over Head Press">Over Head Press</option>
-                  <option value="Row">Row</option>
-                </select>
-              </div>
-            </form>
-          </div>
-
-          <!-- Button submits exercise to be added -->
-          <div id="addExercise">
-            <button type="button" class="btn btn-success" id="addExerciseBtn">
-              <span class="glyphicon glyphicon-plus">
-              </span>
-              Add exercise
-            </button>
-          </div>
-
-          <!-- Error message -->
-          <div class="alert alert-danger" role="alert" id="error">
-          </div>
-        </div>
-      </div>
-
-<!--       <div id="chart-container">
-        
-      </div> -->
 
     </div>
-
+    <!-- jquery -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/utility.js"></script>
-    <script type="text/javascript" src="js/models/user.js"></script>
-    <script type="text/javascript" src="js/models/workout.js"></script>
-    <script type="text/javascript" src="js/models/exercise.js"></script>
-    <script type="text/javascript" src="js/models/set.js"></script>
-    <script type="text/javascript" src="js/dom.js"></script>
+    <!-- angularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-cookies.js"></script>
+    <!-- files -->
+    <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" src="assets/js/utility.js"></script>
+    <script type="text/javascript" src="shared/models/user.js"></script>
+    <script type="text/javascript" src="shared/models/workout.js"></script>
+    <script type="text/javascript" src="shared/models/exercise.js"></script>
+    <script type="text/javascript" src="shared/models/set.js"></script>
+    <script type="text/javascript" src="assets/js/dom.js"></script>
     <!-- adds links for high charts -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>

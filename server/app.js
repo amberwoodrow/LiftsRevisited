@@ -5,10 +5,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan'); // request logger
 var cookieParser = require('cookie-parser'); // setting, getting, encripts cookies
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-
-// mongoose.connect(process.env.MONGO_URI);
-
 var app = express();
 
 app.use(logger('dev'));
@@ -16,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, '../client', 'public')));
+app.use(express.static(path.join(__dirname, '../client', 'app')));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
